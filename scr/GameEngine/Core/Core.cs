@@ -4,11 +4,13 @@ using System.Diagnostics;
 
 namespace GameEngine.Core
 {
-    public class Core
+    public static class Core
     {
-        public List<GameObject> Objects;
+        public static double PointsPerPixel;
+        public static List<GameObject> Walls;
+        public static List<Entity> Entities;
 
-        public void Update()
+        public static void Update()
         {
             //обновление всех объектов
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace GameEngine.Core.Texture
+namespace GameEngine.Render.Texture
 {
     public class TextureHolder
     {
@@ -17,7 +17,7 @@ namespace GameEngine.Core.Texture
             textures = _textures;
         }
 
-        public Bitmap GetTexture(string state)
+        public Texture GetTexture(string state)
         {
             if (!textures.ContainsKey(state))
                 throw new Exception("Unknown state");
@@ -32,7 +32,7 @@ namespace GameEngine.Core.Texture
                 currentFrame = (currentFrame + 1) % textures[state].Length;
             }
             ticksPassed++;
-            return textures[state][currentFrame].Image;
+            return textures[state][currentFrame];
         }
     }
 }

@@ -4,9 +4,7 @@ using System.Text;
 
 namespace GameEngine.Core
 {
-    public abstract class Body
+    public class Wall : GameObject
     {
-        public Vector Location;
-        public Vector Shape;
     }
 }

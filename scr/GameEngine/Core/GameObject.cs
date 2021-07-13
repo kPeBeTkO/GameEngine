@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using GameEngine.Core.Texture;
+using GameEngine.Render.Texture;
+using GameEngine.Core.Collisions;
 
 namespace GameEngine.Core
 {
@@ -14,7 +15,7 @@ namespace GameEngine.Core
         public bool Collidable;
         public string State;
 
-        public Bitmap GetTexture()
+        public Texture GetTexture()
         {
             return textureHolder.GetTexture(State);
         }
