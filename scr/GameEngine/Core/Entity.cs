@@ -9,7 +9,7 @@ namespace GameEngine.Core
         public Vector Speed;
         public void Move()
         {
-
+            Body.Location += Speed;
         }
 
         public abstract void Collide(Entity entity);

@@ -17,10 +17,10 @@ namespace GameEngine.Core.Collisions
             throw new NotImplementedException();
         }
 
-        public override Vector FirstIntersectionWithRay(Ray ray)
+        /*public override Vector FirstIntersectionWithRay(Ray ray)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         public override Vector[] GetVertices()
         {

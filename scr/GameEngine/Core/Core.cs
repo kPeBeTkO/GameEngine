@@ -12,7 +12,8 @@ namespace GameEngine.Core
 
         public static void Update()
         {
-            //обновление всех объектов
+            foreach(var wall in Entities)
+                wall.Move();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace GameEngine.Core
         public bool Collidable;
         public string State;
 
-        public Texture GetTexture()
+        public virtual Texture GetTexture()
         {
             return textureHolder.GetTexture(State);
         }
