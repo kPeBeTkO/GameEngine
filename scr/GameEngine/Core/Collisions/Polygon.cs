@@ -9,6 +9,7 @@ namespace GameEngine.Core.Collisions
         public Vector[] Verteces;
         private Triangle[] Triangles;
         private Vector center;
+        public Vector[] 
         public Polygon(Vector[] v, Vector loc)
         {
             Verteces = v;

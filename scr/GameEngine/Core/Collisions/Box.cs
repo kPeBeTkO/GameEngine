@@ -23,6 +23,21 @@ namespace GameEngine.Core.Collisions
         {
             throw new NotImplementedException();
         }*/
+        public bool TryCollisionWith(Box box)
+        {
+            var vertices = box.GetVertices();
+            for (int i = 0; i < 4; i++)
+                if (!IsInside(vertices[i])) return true;
+            vertices = GetVertices();
+            for (int i = 0; i < 4; i++)
+                if (!IsInside(vertices[i])) return true;
+            return false;
+        }
+
+        public bool TryCollisionWith(Circle circle)
+        {
+            return circle.TryCollision(this);
+        }
 
         public override Vector[] GetVertices()
         {

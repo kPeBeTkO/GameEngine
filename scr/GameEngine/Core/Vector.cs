@@ -40,5 +40,9 @@ namespace GameEngine.Core
         {
             return new Vector(vector.X * multiplaer, vector.Y * multiplaer);
         }
+        public static Vector operator /(Vector vector, double divider)
+        {
+            return new Vector(vector.X / divider, vector.Y / divider);
+        }
     }
 }
