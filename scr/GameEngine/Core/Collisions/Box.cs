@@ -26,11 +26,13 @@ namespace GameEngine.Core.Collisions
         public bool TryCollisionWith(Box box)
         {
             var vertices = box.GetVertices();
+            var thisVertices = GetVertices();
             for (int i = 0; i < 4; i++)
+            {
                 if (!IsInside(vertices[i])) return true;
-            vertices = GetVertices();
-            for (int i = 0; i < 4; i++)
-                if (!IsInside(vertices[i])) return true;
+                if (!IsInside(thisVertices[i])) return true;
+                if (Mathematics.SectorIntersection(vertices[i], vertices[(i + 1) % 4], thisVertices[i], thisVertices[(i + 1) % 4])) return true;
+            }
             return false;
         }
 

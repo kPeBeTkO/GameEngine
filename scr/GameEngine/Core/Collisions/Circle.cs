@@ -22,12 +22,12 @@ namespace GameEngine.Core.Collisions
         {
             var vertices = box.GetVertices();
             for (int i = 0; i < 4; i++)
-                if (!IsInside(vertices[i])) return true;
+                if (Mathematics.GetDistanceToSegment(vertices[i], vertices[(i + 1)% 4], Location) <= Radius) return true;
             return false;
         }
         public bool TryCollision(Circle circle)
         {
-            return IsInside(ClosestPointFrom(circle.Location)) || circle.IsInside(ClosestPointFrom(Location));
+            return Radius + circle.Radius >= Location.DistanceTo(circle.Location);
         }
 
         public override Vector[] GetVertices()
