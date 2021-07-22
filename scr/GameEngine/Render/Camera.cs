@@ -19,10 +19,10 @@ namespace GameEngine.Render
             var g = Graphics.FromImage(frame);
             g.ScaleTransform(resolution.Width / Frame.Width, -resolution.Height / Frame.Height);
             g.TranslateTransform(-(float)(Frame.Location.X - Frame.Width / 2), -(float)(Frame.Location.Y - Frame.Height / 2) - Frame.Height);
-            foreach (var obj in Core.Core.Walls.Concat(Core.Core.Entities))
+            foreach (var obj in Core.Core.Objects)
             {
-                var pos = ConvertVector(obj.Body.Location);
                 var texture = obj.GetTexture();
+                var pos = ConvertVector(obj.Body.Location - new Vector(texture.Size.Width / 2, texture.Size.Height / 2));
                 g.DrawImage(texture.Image, new RectangleF(pos, texture.Size));
             }
             g.Dispose();

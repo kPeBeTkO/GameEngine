@@ -6,7 +6,7 @@ namespace GameEngine.Core
 {
     public abstract class Entity : GameObject
     {
-        public Vector Speed;
+        public Vector Speed = new Vector(0, 0);
         public void Move()
         {
             Body.Location += Speed;

@@ -32,9 +32,22 @@ namespace GameEngine.Core.Collisions
             }
             return min;
         }
+        public static bool CheckCollision(Body body1, Body body2)
+        {
+            if (body1 is Circle circle1 && body2 is Circle circle2)
+            {
+                return circle1.TryCollision(circle2);
+            }
+            throw new NotImplementedException();
+        }
 
         public abstract bool IsInside(Vector point);
         public abstract Vector ClosestPointFrom(Vector point);
         public abstract Vector[] GetVertices();
+
+        public override string ToString()
+        {
+            return Location.ToString();
+        }
     }
 }

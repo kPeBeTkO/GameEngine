@@ -6,6 +6,6 @@ namespace GameEngine.Core.Physics
 {
     public interface IPhysics
     {
-        void MoveObject();
+        void MoveObject(GameObject obj);
     }
 }

@@ -15,7 +15,7 @@ namespace GameEngine.Core.Collisions
         public override Vector ClosestPointFrom(Vector point)
         {
             var vec = point - Location;
-            return vec / (vec.Length * Radius) + Location;
+            return vec * (Radius / vec.Length) + Location;
         }
 
         public bool TryCollision(Box box)

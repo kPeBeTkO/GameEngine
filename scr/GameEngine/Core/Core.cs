@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using GameEngine.Core.Physics;
 
 namespace GameEngine.Core
 {
     public static class Core
     {
-        public static double PointsPerPixel;
-        public static List<GameObject> Walls;
-        public static List<Entity> Entities;
+        public static List<GameObject> Objects;
+        public static IPhysics Physics;
 
         public static void Update()
         {
-            foreach(var wall in Entities)
-                wall.Move();
+            foreach(var obj in Objects)
+                Physics.MoveObject(obj);
         }
     }
 }

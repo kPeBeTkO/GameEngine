@@ -4,12 +4,11 @@ using System.Text;
 
 namespace GameEngine.Core.Collisions
 {
-    class Polygon : Body
+    public class Polygon : Body
     {
         public Vector[] Verteces;
         private Triangle[] Triangles;
         private Vector center;
-        public Vector[] 
         public Polygon(Vector[] v, Vector loc)
         {
             Verteces = v;

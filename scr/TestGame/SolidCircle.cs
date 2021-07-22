@@ -10,19 +10,19 @@ using GameEngine.Core.Collisions;
 
 namespace TestGame
 {
-    class Wall : Entity
+    class SolidCircle : Entity
     {
         Texture texture;
-        public Wall()
+        public SolidCircle(double size, Vector location)
         {
-            Body = new Square(1);
-            Body.Location = new Vector(5, 5);
+            Body = new Circle(size / 2);
+            Body.Location = location;
             var im = new Bitmap(100, 100);
-            Speed = new Vector(0.1, 0);
+            Collidable = true;
             var g = Graphics.FromImage(im);
-            g.FillRectangle(Brushes.Black, new RectangleF(0, 0, 100, 100));
+            g.FillEllipse(Brushes.Black, new RectangleF(0, 0, 100, 100));
             g.Dispose();
-            texture = new Texture(im, new SizeF(1, 1));
+            texture = new Texture(im, new SizeF((float)size, (float)size));
         }
 
         public override void Collide(Entity entity)
