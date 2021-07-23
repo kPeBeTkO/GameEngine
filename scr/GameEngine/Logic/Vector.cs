@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameEngine.Core
+namespace GameEngine.Logic
 {
     public class Vector
     {
@@ -50,7 +50,23 @@ namespace GameEngine.Core
         }
         public static bool operator ==(Vector v1, Vector v2)
         {
+            if (v1 is null || v2 is null)
+                return v1 is null && v2 is null;
             return v1.X == v2.X && v1.Y == v2.Y;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Vector vector)
+            {
+                return vector == this;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return (int)((X.GetHashCode() * 65536L + Y.GetHashCode()) % int.MaxValue);
         }
 
         public override string ToString()

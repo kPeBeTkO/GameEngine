@@ -1,9 +1,9 @@
-﻿using GameEngine.Core.Collisions;
+﻿using GameEngine.Logic.Collisions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameEngine.Core
+namespace GameEngine.Logic
 {
     class Triangle
     {

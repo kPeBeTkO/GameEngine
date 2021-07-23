@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameEngine.Core.Behavior
+namespace GameEngine.Logic.Behavior
 {
     public class Behavior
     {
@@ -14,12 +14,12 @@ namespace GameEngine.Core.Behavior
         }
         public void Work(EventArgs args)
         {
-            lock (obj.Body.Location)
+            /*lock (obj.Body.Location)
             {
                 foreach (var control in controls)
                     if (control.Event == args)
                         control.EventHandler(obj);
-            }
+            }*/
         }
     }
 }

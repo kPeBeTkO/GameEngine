@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameEngine.Core.Physics
+namespace GameEngine.Logic.Physics
 {
     public interface IPhysics
     {

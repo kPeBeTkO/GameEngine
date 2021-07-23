@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameEngine.Core.Collisions
+namespace GameEngine.Logic.Collisions
 {
     public abstract class Body
     {
@@ -37,6 +37,18 @@ namespace GameEngine.Core.Collisions
             if (body1 is Circle circle1 && body2 is Circle circle2)
             {
                 return circle1.TryCollision(circle2);
+            }
+            if (body1 is Box box1 && body2 is Box box2)
+            {
+                return box1.TryCollision(box2);
+            }
+            if (body1 is Circle circle && body2 is Box box)
+            {
+                return circle.TryCollision(box);
+            }
+            if (body2 is Circle circle3 && body1 is Box box3)
+            {
+                return circle3.TryCollision(box3);
             }
             throw new NotImplementedException();
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameEngine.Core.Collisions
+namespace GameEngine.Logic.Collisions
 {
     public class Square : Body
     {
