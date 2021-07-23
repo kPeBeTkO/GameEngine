@@ -16,7 +16,22 @@ namespace GameEngine.Core.Collisions
 
         public override Vector ClosestPointFrom(Vector point)
         {
-            throw new NotImplementedException();
+            var vertices = GetVertices();
+            var closestPoint = Mathematics.GetClosestPoint(vertices[4], vertices[0], point);
+            var minLen = closestPoint.DistanceTo(point);
+            Vector newPoint;
+            double newLen;
+            for (int i = 0; i < 3; i++)
+            {
+                newPoint = Mathematics.GetClosestPoint(vertices[i], vertices[i + 1], point);
+                newLen = newPoint.DistanceTo(point);
+                if (minLen > newLen)
+                {
+                    minLen = newLen;
+                    closestPoint = newPoint;
+                }
+            }
+            return closestPoint;
         }
 
         /*public override Vector FirstIntersectionWithRay(Ray ray)

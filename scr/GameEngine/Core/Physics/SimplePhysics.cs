@@ -18,11 +18,11 @@ namespace GameEngine.Core.Physics
             if (!entity.Collidable)
                 return;
             var offset = new Vector(0, 0);
-            foreach(var other in Core.Objects)
+            foreach (var other in Core.Objects)
             {
                 if (other == entity)
                     continue;
-                if (other.Collidable && Body.CheckCollision(entity.Body, other.Body)) 
+                if (other.Collidable && Body.CheckCollision(entity.Body, other.Body))
                 {
                     offset += GetOffsetFromBody(entity.Body, other.Body);
                 }

@@ -63,6 +63,31 @@ namespace GameEngine.Core.Collisions
                 return 2 / lenSegAB * Math.Sqrt(perimetr * (perimetr - lenSegAB) *
                                    (perimetr - lenSegCB) * (perimetr - lenSegAC));
         }
+        public static Vector GetClosestPoint(Vector begin, Vector end, Vector point)
+        {
+            double lenSegAB = begin.DistanceTo(end);
+            double lenSegAC = begin.DistanceTo(point);
+            double lenSegCB = end.DistanceTo(point);
+            double perimetr = (lenSegAB + lenSegAC + lenSegCB) / 2;
+            if ((lenSegAB * lenSegAB + lenSegAC * lenSegAC) <= (lenSegCB * lenSegCB) ||
+                (lenSegAB * lenSegAB + lenSegCB * lenSegCB) <= (lenSegAC * lenSegAC))
+            {
+                if (lenSegAC < lenSegCB)
+                    return begin;
+                else
+                    return end;
+            }
+            else
+            {
+                double x = (begin.X * begin.X * point.X - 2 * begin.X * end.X * point.X + end.X * end.X * point.X + end.X *
+               (begin.Y - end.Y) * (begin.Y - point.Y) - begin.X * (begin.Y - end.Y) * (end.Y - point.Y)) / ((begin.X - end.X) *
+                       (begin.X - end.X) + (begin.Y - end.Y) * (begin.Y - end.Y));
+                double y = (end.X * end.X * begin.Y + begin.X * begin.X * end.Y + end.X * point.X * (end.Y - begin.Y) - begin.X *
+                            (point.X * (end.Y - begin.Y) + end.X * (begin.Y + end.Y)) + (begin.Y - end.Y) * (begin.Y - end.Y) * point.Y) / ((
+                                        begin.X - end.X) * (begin.X - end.X) + (begin.Y - end.Y) * (begin.Y - end.Y));
+                return new Vector(x, y);
+            }
+        }
         public static bool SectorIntersection(Vector begin1, Vector end1, Vector begin2, Vector end2)
         {
             if (begin1 == begin2 || begin1 == end2 || end1 == begin2 || end1 == end2) return true;
