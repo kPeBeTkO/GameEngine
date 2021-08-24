@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameEngine.Logic;
-using GameEngine.Render.Texture;
+using GameEngine.View.Render.Texture;
 using System.Drawing;
 using GameEngine.Logic.Collisions;
 

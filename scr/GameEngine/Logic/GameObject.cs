@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using GameEngine.Render.Texture;
+using GameEngine.View.Render.Texture;
 using GameEngine.Logic.Collisions;
 
 namespace GameEngine.Logic

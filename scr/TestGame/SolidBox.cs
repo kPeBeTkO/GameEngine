@@ -1,6 +1,6 @@
 ﻿using GameEngine.Logic;
 using GameEngine.Logic.Collisions;
-using GameEngine.Render.Texture;
+using GameEngine.View.Render.Texture;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace TestGame
 {
-    class SolidBox : Entity
+    class SolidBox : Entity, IUpdatable
     {
         Texture texture;
         public SolidBox(double size, Vector location) : this(size, size, location)
@@ -34,6 +34,12 @@ namespace TestGame
         public override Texture GetTexture()
         {
             return texture;
+        }
+
+        public void Update()
+        {
+            if (Core.MouseLocation != null)
+                Body.Location = Core.MouseLocation;
         }
     }
 }

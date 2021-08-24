@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace GameEngine.Render.Texture
+namespace GameEngine.View.Render.Texture
 {
     public class TextureHolder
     {

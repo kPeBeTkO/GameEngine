@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using GameEngine.Logic;
-using GameEngine.Render.Texture;
+using GameEngine.View.Render.Texture;
 using System.Linq;
 using GameEngine.Logic.Collisions;
 using System.Drawing;
 
-namespace GameEngine.Render
+namespace GameEngine.View.Render
 {
     public class Camera
     {

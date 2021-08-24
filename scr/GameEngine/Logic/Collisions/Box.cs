@@ -69,8 +69,8 @@ namespace GameEngine.Logic.Collisions
 
         public override bool IsInside(Vector point)
         {
-            return (Location.X - Width / 2 < point.X && point.X < Location.X + Width / 2) &&
-                   (Location.Y - Height / 2 < point.Y && point.Y < Location.Y + Height / 2);
+            return (Location.X - Width / 2 <= point.X && point.X < Location.X + Width / 2) &&
+                   (Location.Y - Height / 2 <= point.Y && point.Y < Location.Y + Height / 2);
         }
     }
 }
