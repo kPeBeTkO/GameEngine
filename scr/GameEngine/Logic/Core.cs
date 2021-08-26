@@ -4,7 +4,6 @@ using System.Diagnostics;
 using GameEngine.Logic.Collisions;
 using GameEngine.Logic.Physics;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace GameEngine.Logic
 {
@@ -14,11 +13,11 @@ namespace GameEngine.Logic
         public static IPhysics Physics;
         public static List<IUpdatable> Scripts = new List<IUpdatable>();
 
-        private static List<Keys> keysPressed = new List<Keys>();
-        public static IReadOnlyList<Keys> KeysPressed => keysPressed;
+        private static List<KeyInput> keysPressed = new List<KeyInput>();
+        public static IReadOnlyList<KeyInput> KeysPressed => keysPressed;
 
-        private static HashSet<Keys> activeKeys = new HashSet<Keys>();
-        public static IReadOnlyCollection<Keys> ActiveKeys => activeKeys;
+        private static HashSet<string> activeKeys = new HashSet<string>();
+        public static IReadOnlyCollection<string> ActiveKeys => activeKeys;
 
         public static Vector MouseLocation;
 
@@ -39,16 +38,13 @@ namespace GameEngine.Logic
                     collidable[i].Collide(collidable[j]);
         }
 
-        public static void KeyDown(Keys key)
+        public static void Input(KeyInput input)
         {
-            keysPressed.Add(key);
-            activeKeys.Add(key);
-        }
-
-        public static void KeyUp(Keys key)
-        {
-
-            activeKeys.Remove(key);
+            keysPressed.Add(input);
+            if (input.Release)
+                activeKeys.Remove(input.Key);
+            else
+                activeKeys.Add(input.Key);
         }
     }
 }

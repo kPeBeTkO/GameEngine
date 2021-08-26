@@ -34,8 +34,11 @@ namespace GameBase
                 Core.Update();
                 Invalidate();
             };
-            KeyDown += (s, a) => Core.KeyDown(a.KeyCode);
-            KeyUp += (s, a) => Core.KeyUp(a.KeyCode);
+            KeyDown += (s, a) => Core.Input(new KeyInput(a.KeyCode.ToString()));
+            KeyUp += (s, a) => Core.Input(new KeyInput(a.KeyCode.ToString(), true));
+            MouseDown += (s, a) => Core.Input(new KeyInput("Mouse" + a.Button.ToString()));
+            MouseUp += (s, a) => Core.Input(new KeyInput("Mouse" + a.Button.ToString(), true));
+
             MouseMove += (s, a) =>
             {
                 var offset = new Vector(a.X - FrameLocation.X - FrameLocation.Width / 2,  (a.Y - FrameLocation.Y) - FrameLocation.Height / 2);
