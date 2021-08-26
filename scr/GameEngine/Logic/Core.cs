@@ -36,6 +36,7 @@ namespace GameEngine.Logic
             for (var i = 0; i < collidable.Length; i++)
                 for (var j = i + 1; j < collidable.Length; j++)
                     collidable[i].Collide(collidable[j]);
+            keysPressed.Clear();
         }
 
         public static void Input(KeyInput input)

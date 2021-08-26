@@ -16,7 +16,7 @@ namespace TestGame
     class Game : BaseForm
     {
         public HashSet<Keys> keysPresed = new HashSet<Keys>();
-        public Game() : base(20)
+        public Game() : base(60)
         {
             DoubleBuffered = true;
             var player = new SolidBox(1, 1, new Vector(1, 5));
@@ -26,7 +26,7 @@ namespace TestGame
             Cam.Frame.Location = new Vector(5, 5);
             Width = 600;
             Height = 600;
-            
+            Timer.Start();
         }
 
         public Vector GetSpeed()

@@ -82,6 +82,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameBase\GameBase.csproj">
+      <Project>{e1c78080-d2a0-496e-a73d-74327b0e475b}</Project>
+      <Name>GameBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameEngine\GameEngine.csproj">
       <Project>{42714ac9-f577-43aa-a69a-8dafb5d6c88f}</Project>
       <Name>GameEngine</Name>

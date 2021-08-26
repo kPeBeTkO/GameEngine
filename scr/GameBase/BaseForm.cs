@@ -45,7 +45,7 @@ namespace GameBase
                 var scaledOffset = new Vector(offset.X * (Cam.Frame.Width / FrameLocation.Width), -offset.Y * (Cam.Frame.Height / FrameLocation.Height));
                 Core.MouseLocation = Cam.Frame.Location + scaledOffset;
             };
-            Timer.Start();
+            //Timer.Start();
         }
 
         public virtual void RenderBack(Graphics graphics)

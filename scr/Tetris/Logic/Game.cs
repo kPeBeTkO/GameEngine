@@ -55,6 +55,23 @@ namespace Tetris.Logic
                     GenerateFigure();
                 }
             }
+            foreach(var key in Core.KeysPressed)
+                if (key.Press)
+                    switch(key.Key)
+                    {
+                        case "Up":
+                            CurrentFigure.Rotate();
+                            break;
+                        case "Right":
+                            CurrentFigure.MoveRight();
+                            break;
+                        case "Left":
+                            CurrentFigure.MoveLeft();
+                            break;
+                        case "Down":
+                            SkipDown();
+                            break;
+                    }
         }
 
         public void SkipDown()
