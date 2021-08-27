@@ -20,6 +20,8 @@ namespace TestGame
 
         public SolidBox(double width, double height, Vector location)
         {
+            DrawPriority = 1;
+            Collidable = true;
             Body = new Box(width, height);
             Body.Location = location;
             var im = new Bitmap(100, 100);

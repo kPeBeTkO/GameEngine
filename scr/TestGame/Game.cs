@@ -21,6 +21,7 @@ namespace TestGame
             DoubleBuffered = true;
             var player = new SolidBox(1, 1, new Vector(1, 5));
             Core.AddObject(player);
+            Core.AddObject(new CollisionChecker(1, new Vector(5, 5)));
             FrameLocation = new Rectangle(0, 0, Width, Height);
             Cam.Frame = new Box(10, 10);
             Cam.Frame.Location = new Vector(5, 5);

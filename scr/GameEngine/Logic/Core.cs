@@ -44,10 +44,15 @@ namespace GameEngine.Logic
                 if (Physics != null)
                     Physics.MoveObject(obj);
             }
+
             var collidable = Objects.Where(o => o.Collidable).ToArray();
             for (var i = 0; i < collidable.Length; i++)
                 for (var j = i + 1; j < collidable.Length; j++)
-                    collidable[i].Collide(collidable[j]);
+                    if (Body.CheckCollision(collidable[i].Body, collidable[j].Body))
+                    {
+                        collidable[i].Collide(collidable[j]);
+                        collidable[j].Collide(collidable[i]);
+                    }
 
             keysPressed.Clear();
             objects.RemoveAll(o => o.Dead);
