@@ -10,13 +10,16 @@ namespace GameEngine.Logic
     public abstract class GameObject
     {
         private TextureHolder textureHolder;
-        public bool Loaded;
         public Body Body;
+        public string State;
+
+        public int DrawPriority;
+        public bool Visible = true;
+
         public bool Solid;
         public bool Fixed;
         public bool Collidable;
-        public string State;
-        public int DrawPriority;
+        public bool Dead;
 
         public virtual Texture GetTexture()
         {

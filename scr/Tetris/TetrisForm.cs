@@ -15,7 +15,7 @@ namespace Tetris
 {
     class TetrisForm : BaseForm
     {
-        public TetrisForm() : base(40)
+        public TetrisForm() : base(20)
         {
             
             Width = 600;
@@ -25,7 +25,7 @@ namespace Tetris
             Cam.Frame = new Box(width + 2, height + 1);
             Cam.Frame.Location = new Vector(width / 2 + 0.5, height / 2 - 0.5);
             var game = new Game(width, height);
-            Core.Scripts.Add(game);
+            Core.AddScript(game);
             
             Timer.Start();
         }

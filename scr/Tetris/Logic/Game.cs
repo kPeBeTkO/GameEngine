@@ -15,7 +15,8 @@ namespace Tetris.Logic
         public TetrisFigure Next;
         private Random random = new Random();
         private int ticksPassed;
-        private int ticksPerMove = 30;
+        private int ticksPerMove => Math.Max(15 - figuresPast / 5, 1);
+        private int figuresPast;
         public readonly int Width;
         public readonly int Height;
 
@@ -23,19 +24,18 @@ namespace Tetris.Logic
         {
             Width = width;
             Height = height;
-            Core.Objects = new List<GameObject>();
             Field = new bool[width + 2, height + 6];
             for (int i = 0; i < width + 2; i++)
             { 
                 Field[i, 0] = true;
-                Core.Objects.Add(new Block(i, 0, Color.Gray, null){ Fixed = true });;
+                Core.AddObject(new Block(i, 0, Color.Gray, null){ Fixed = true });;
             }
             for (int i = 0; i < height + 1; i++)
             {
                 Field[0, i] = true;
-                Core.Objects.Add(new Block(0, i, Color.Gray, null){ Fixed = true });
+                Core.AddObject(new Block(0, i, Color.Gray, null){ Fixed = true});
                 Field[width + 1, i] = true;
-                Core.Objects.Add(new Block(width + 1, i, Color.Gray, null){ Fixed = true });
+                Core.AddObject(new Block(width + 1, i, Color.Gray, null){ Fixed = true });
             }
             Next = (TetrisFigure)random.Next(7);
             GenerateFigure();
@@ -105,13 +105,13 @@ namespace Tetris.Logic
                 }
             }
             foreach(var block in blocksToDelete)
-                Core.Objects.Remove(block);
+                block.Dead = true;
             for (var i = 1; i < Height + 6; i++)
                 for (var j = 1; j < Width + 1; j++)
                 {
                     Field[j, i] = false;
                 }
-            foreach(var block in Core.Objects.Where(o => o is Block && !o.Fixed).Cast<Block>())
+            foreach(var block in Core.Objects.Where(o => o is Block && !o.Fixed && !o.Dead).Cast<Block>())
             {
                 block.Body.Location += new Vector(0, -cleared.Count(i => i < block.Body.Location.Y));
                 Field[(int)block.Body.Location.X, (int)block.Body.Location.Y] = true;
@@ -120,9 +120,10 @@ namespace Tetris.Logic
 
         void GenerateFigure()
         {
+            figuresPast++;
             CurrentFigure = Figure.Create(Next, Width / 2, Height, Field);
             Next = (TetrisFigure)random.Next(7);
-            Core.Objects.AddRange(CurrentFigure.blocks);
+            Core.AddObjects(CurrentFigure.blocks);
         }
     }
 }
