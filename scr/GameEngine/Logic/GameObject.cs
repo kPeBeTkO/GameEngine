@@ -9,7 +9,7 @@ namespace GameEngine.Logic
 {
     public abstract class GameObject
     {
-        private TextureHolder textureHolder;
+        protected TextureHolder textureHolder;
         public Body Body;
         public string State;
 

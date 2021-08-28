@@ -25,8 +25,9 @@ namespace GameEngine.View.Render.Texture
             {
                 currentFrame = 0;
                 ticksPassed = 0;
+                previousState = state;
             }
-            if (ticksPassed > textures[state][currentFrame].Duration)
+            if (ticksPassed >= textures[state][currentFrame].Duration)
             {
                 ticksPassed = 0;
                 currentFrame = (currentFrame + 1) % textures[state].Length;

@@ -19,6 +19,7 @@ namespace GameEngine.View.Render
             var g = Graphics.FromImage(frame);
             g.ScaleTransform(resolution.Width / (float)Frame.Width, -resolution.Height / (float)Frame.Height);
             g.TranslateTransform(-(float)(Frame.Location.X - Frame.Width / 2), -(float)(Frame.Location.Y - Frame.Height / 2) - (float)Frame.Height);
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             foreach (var obj in Core.Objects.Where(o => o.Visible).OrderBy(o => o.DrawPriority))
             {
                 var texture = obj.GetTexture();
