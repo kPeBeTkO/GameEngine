@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tetris", "Tetris\Tetris.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBase", "GameBase\GameBase.csproj", "{E1C78080-D2A0-496E-A73D-74327B0E475B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceInvaders", "Space invaders\SpaceInvaders.csproj", "{10AEF7A5-6C79-439E-8646-204B847FF67D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{E1C78080-D2A0-496E-A73D-74327B0E475B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1C78080-D2A0-496E-A73D-74327B0E475B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1C78080-D2A0-496E-A73D-74327B0E475B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10AEF7A5-6C79-439E-8646-204B847FF67D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10AEF7A5-6C79-439E-8646-204B847FF67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10AEF7A5-6C79-439E-8646-204B847FF67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10AEF7A5-6C79-439E-8646-204B847FF67D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
