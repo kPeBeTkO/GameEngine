@@ -21,7 +21,7 @@ namespace SpaceInvaders.Logic
             var im = new Bitmap(1, 2);
             var g = Graphics.FromImage(im);
             g.FillRectangle(Brushes.White, 0, 0, 1, 2);
-            var texture = new Texture(im, new SizeF(1, 2));
+            var texture = new Texture(im, 1, 2);
             var dic = new Dictionary<string, Texture[]>();
             dic["1"] = new Texture[]{texture};
             State = "1";

@@ -22,11 +22,14 @@ namespace SpaceInvaders.Logic
             Collidable = true;
             Solid = true;
             var im = new Bitmap("Resources\\Spaceship.png");
-            var texture = new Texture(im, new SizeF(11, -8));
+            var idle = new Texture(im, 11, 8);
+            im = new Bitmap("Resources\\SpaceshipAtack.png");
+            var shoot = new Texture(im, 11, 11);
             Solid = true;
             var dic = new Dictionary<string, Texture[]>();
-            dic["1"] = new Texture[] { texture };
-            State = "1";
+            dic["idle"] = new Texture[] { idle };
+            dic["shot"] = new Texture[] { shoot };
+            State = "idle";
             textureHolder = new TextureHolder(dic);
         }
 
@@ -34,7 +37,10 @@ namespace SpaceInvaders.Logic
         {
             if (lastShot > 10)
             {
+                State = "shot";
                 var bullet = new Bullet(new Vector(Body.Location.X, Body.Location.Y + 5));
+                //var dir = Core.MouseLocation - Body.Location;
+                //bullet.Speed = dir * (2 / dir.Length);
                 bullet.Speed = new Vector(0, 2);
                 Core.AddObject(bullet);
                 lastShot = 0;
@@ -43,6 +49,7 @@ namespace SpaceInvaders.Logic
 
         public void Update()
         {
+            State = "idle";
             lastShot++;
             Speed = new Vector(0, 0);
             if (Core.ActiveKeys.Contains("Left"))
@@ -51,7 +58,7 @@ namespace SpaceInvaders.Logic
                 Speed += new Vector(3, 0);
             foreach (var key in Core.KeysPressed)
             {
-                if (key.Key == "Up" && key.Press)
+                if (key.Key == "Space" && key.Press)
                 {
                     Shot();
                     break;

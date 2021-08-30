@@ -31,9 +31,9 @@ namespace SpaceInvaders.Logic
             Body.Location = new Vector(random.Next(6, 94), 109);
             Collidable = true;
             var type = random.Next(0, 9);
-            var texture1 = new Texture(textures1[type], new SizeF(11, -9), 2);
+            var texture1 = new Texture(textures1[type], 11, 9, 2);
             var dic = new Dictionary<string, Texture[]>();
-            var texture2 = new Texture(textures2[type], new SizeF(11, -9), 2);
+            var texture2 = new Texture(textures2[type], 11, 9, 2);
             dic["1"] = new Texture[] { texture1, texture2 };
             State = "1";
             textureHolder = new TextureHolder(dic);

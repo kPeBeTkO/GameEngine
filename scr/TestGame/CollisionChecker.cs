@@ -25,16 +25,17 @@ namespace TestGame
             Body = new Box(width, height);
             Body.Location = location;
             Collidable = true;
+            Solid = true;
             var im = new Bitmap(100, 100);
             var g = Graphics.FromImage(im);
             g.FillRectangle(Brushes.Red, new RectangleF(0, 0, 100, 100));
             g.Dispose();
-            red = new Texture(im, new SizeF((float)width, (float)height));
+            red = new Texture(im, width, height);
             im = new Bitmap(100, 100);
             g = Graphics.FromImage(im);
             g.FillRectangle(Brushes.Blue, new RectangleF(0, 0, 100, 100));
             g.Dispose();
-            blue = new Texture(im, new SizeF((float)width, (float)height));
+            blue = new Texture(im, width, height);
         }
 
 

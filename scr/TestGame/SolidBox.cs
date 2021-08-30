@@ -23,13 +23,14 @@ namespace TestGame
             DrawPriority = 1;
             Collidable = true;
             Body = new Box(width, height);
+            Speed = new Vector(0, 0);
             Body.Location = location;
             var im = new Bitmap(100, 100);
             Solid = true;
             var g = Graphics.FromImage(im);
             g.FillRectangle(Brushes.Black, new RectangleF(0, 0, 100, 100));
             g.Dispose();
-            texture = new Texture(im, new SizeF((float)width, (float)height));
+            texture = new Texture(im, width, height);
         }
 
 

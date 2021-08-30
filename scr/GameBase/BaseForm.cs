@@ -8,7 +8,7 @@ using GameEngine.Logic;
 
 namespace GameBase
 {
-    public class BaseForm : Form
+    public abstract class BaseForm : Form
     {
         public Camera Cam;
         public Rectangle FrameLocation;

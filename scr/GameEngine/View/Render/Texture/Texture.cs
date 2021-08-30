@@ -9,12 +9,14 @@ namespace GameEngine.View.Render.Texture
     {
         public readonly Bitmap Image;
         public readonly int Duration;
-        public readonly SizeF Size;
+        public readonly float Height;
+        public readonly float Width;
 
-        public Texture(Bitmap image, SizeF size, int duration = 1)
+        public Texture(Bitmap image, double width, double height, int duration = 1)
         {
             Image = image;
-            Size = size;
+            Height = (float)height;
+            Width = (float)width;
             Duration = duration;
         }
     }

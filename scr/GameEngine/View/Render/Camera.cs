@@ -23,16 +23,16 @@ namespace GameEngine.View.Render
             foreach (var obj in Core.Objects.Where(o => o.Visible).OrderBy(o => o.DrawPriority))
             {
                 var texture = obj.GetTexture();
-                var pos = ConvertVector(obj.Body.Location - new Vector(texture.Size.Width / 2, texture.Size.Height / 2));
-                g.DrawImage(texture.Image, new RectangleF(pos, texture.Size));
+                var pos = ConvertVector(obj.Body.Location - new Vector(texture.Width / 2, texture.Height / 2), texture.Height);
+                g.DrawImage(texture.Image, new RectangleF(pos, new SizeF(texture.Width, -texture.Height)));
             }
             g.Dispose();
             return frame;
         }
 
-        static PointF ConvertVector(Vector v)
+        static PointF ConvertVector(Vector v, double height)
         {
-            return new PointF((float)v.X, (float)v.Y);
+            return new PointF((float)v.X, (float)v.Y + (float)height);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Tetris.Logic
             g.FillRectangle(new SolidBrush(color), new RectangleF(0, 0, 100, 100));
             g.DrawRectangle(new Pen(Brushes.Black, 10), new Rectangle(0, 0, 100, 100));
             g.Dispose();
-            texture = new Texture(im, new SizeF(1, 1));
+            texture = new Texture(im, 1, 1);
         }
 
         public override Texture GetTexture()

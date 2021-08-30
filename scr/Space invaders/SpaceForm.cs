@@ -36,7 +36,15 @@ namespace SpaceInvaders
 
         public override void RenderBack(Graphics graphics)
         {
-            graphics.FillRectangle(Brushes.Black,0,0,1000, 1000);
+            graphics.FillRectangle(Brushes.Black, 0, 0, Width, Height);
+            var rnd = new Random();
+            for (var i = 0; i < 50; i++)
+            {
+                var x = rnd.Next(Width);
+                var y = rnd.Next(Height);
+                var size = rnd.Next(1, 4);
+                graphics.FillRectangle(Brushes.White, x, y, size, size);
+            }
         }
 
         public override void RenderGui(Graphics graphics)

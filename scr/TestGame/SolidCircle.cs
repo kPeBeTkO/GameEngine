@@ -22,7 +22,7 @@ namespace TestGame
             var g = Graphics.FromImage(im);
             g.FillEllipse(Brushes.Black, new RectangleF(0, 0, 100, 100));
             g.Dispose();
-            texture = new Texture(im, new SizeF((float)size, (float)size));
+            texture = new Texture(im, size, size);
         }
 
 

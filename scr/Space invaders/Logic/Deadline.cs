@@ -19,7 +19,7 @@ namespace SpaceInvaders.Logic
             Body = new Box(1000, 1);
             Body.Location = new Vector(25, 20);
             Collidable = true;
-            var texture = new Texture(new Bitmap(1,1), new SizeF(1,1));
+            var texture = new Texture(new Bitmap(1,1), 1, 1);
             var dic = new Dictionary<string, Texture[]>();
             dic["1"] = new Texture[] { texture };
             State = "1";

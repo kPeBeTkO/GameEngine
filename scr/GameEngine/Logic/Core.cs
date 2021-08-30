@@ -87,6 +87,10 @@ namespace GameEngine.Logic
             newScripts.Add(script);
         }
 
+        public static void EndScript(IUpdatable script)
+        {
+            endedScripts.Add(script);
+        }
 
         public static void Clear()
         {
