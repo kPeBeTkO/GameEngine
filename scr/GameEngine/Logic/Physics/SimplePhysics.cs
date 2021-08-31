@@ -24,7 +24,9 @@ namespace GameEngine.Logic.Physics
                     continue;
                 if (other.Solid && Body.CheckCollision(entity.Body, other.Body)) 
                 {
-                    offset += GetOffsetFromBody(entity.Body, other.Body);
+                    var bodyOffset = GetOffsetFromBody(entity.Body, other.Body);
+                    if (bodyOffset.IsValid())
+                        offset += bodyOffset;
                 }
             }
             entity.Body.Location += offset;
@@ -34,20 +36,38 @@ namespace GameEngine.Logic.Physics
         {
             if (entity is Box)
             {
-                var deepest = entity.ClosestPointFrom(body.Location);
-                if (body.IsInside(deepest))
+                if (!entity.IsInside(body.Location))
                 {
+                    var deepest = entity.ClosestPointFrom(body.Location);
                     var outside = body.ClosestPointFrom(deepest);
                     return outside - deepest;
+                }
+                else
+                {
+                    //недоделано
+                    var e = (Box)entity;
+                    var dist = e.Location - body.Location;
+                    var closest = body.ClosestPointFrom(e.Location);
+                    var dist2 = closest - body.Location;
+                    if (e.Height / 2 - Math.Abs(dist.Y) < e.Width / 2 -Math.Abs(dist.X))
+                    {
+                        return new Vector(0, Math.Sign(dist.Y) * (e.Height / 2 + Math.Abs(dist2.Y) - Math.Abs(dist.Y)));
+                    }
+                    else
+                        return new Vector(Math.Sign(dist.X) * (e.Width / 2 + Math.Abs(dist2.X) - Math.Abs(dist.X)), 0);
                 }
             }
             else
             {
-                var deepest = body.ClosestPointFrom(entity.Location);
-                if (entity.IsInside(deepest))
+                if (!entity.IsInside(body.Location))
                 {
+                    var deepest = body.ClosestPointFrom(entity.Location);
                     var outside = entity.ClosestPointFrom(deepest);
                     return deepest - outside;
+                }
+                else
+                {
+                    //недоделано
                 }
             }
             return new Vector(0, 0);

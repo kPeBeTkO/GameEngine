@@ -16,6 +16,11 @@ namespace GameEngine.Logic
             Y = y;
         }
 
+        public bool IsValid()
+        {
+            return !double.IsNaN(X) && !double.IsNaN(Y) && !double.IsInfinity(X) && !double.IsInfinity(Y);
+        }
+
         public double DistanceTo(Vector other)
         {
             return (this - other).Length;

@@ -22,17 +22,20 @@ namespace TestGame
 
         public CollisionChecker(double width, double height, Vector location)
         {
+            Body = new Circle(width / 2);
             Body = new Box(width, height);
             Body.Location = location;
             Collidable = true;
             Solid = true;
             var im = new Bitmap(100, 100);
             var g = Graphics.FromImage(im);
+            g.FillEllipse(Brushes.Red, new RectangleF(0, 0, 100, 100));
             g.FillRectangle(Brushes.Red, new RectangleF(0, 0, 100, 100));
             g.Dispose();
             red = new Texture(im, width, height);
             im = new Bitmap(100, 100);
             g = Graphics.FromImage(im);
+            g.FillEllipse(Brushes.Blue, new RectangleF(0, 0, 100, 100));
             g.FillRectangle(Brushes.Blue, new RectangleF(0, 0, 100, 100));
             g.Dispose();
             blue = new Texture(im, width, height);

@@ -10,7 +10,7 @@ using GameEngine.Logic.Collisions;
 
 namespace TestGame
 {
-    class SolidCircle : Entity
+    class SolidCircle : Entity, IUpdatable
     {
         Texture texture;
         public SolidCircle(double size, Vector location)
@@ -29,6 +29,12 @@ namespace TestGame
         public override Texture GetTexture()
         {
             return texture;
+        }
+
+        public void Update()
+        {
+            if (Core.MouseLocation != null)
+                Body.Location = Core.MouseLocation;
         }
     }
 }
